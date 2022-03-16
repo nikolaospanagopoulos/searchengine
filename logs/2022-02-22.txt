@@ -1,0 +1,2 @@
+[22-Feb-2022 01:50:11 Europe/Berlin] uncaught exceptionExceptionMessage:Method indexAction in controller App\Controllers\Admin\Users cannot be called directly - remove the Action suffix to call this methodStack trace: #0 /home/nikospanag/appsPHP/phpFramework/public/index.php(27): Core\Router->dispatch('admin/users/ind...')
+#1 {main}Thrown in /home/nikospanag/appsPHP/phpFramework/Core/Router.php

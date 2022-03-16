@@ -1,0 +1,17 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node esbuild.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.7.1",
+    "esbuild": "^0.14.25",
+    "masonry-layout": "^4.2.2",
+    "plotly.js-dist-min": "^2.11.0"
+  }
+}

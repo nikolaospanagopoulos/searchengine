@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": ["../../src/Telemetry.js"],
+  "mappings": ";;AAAe,uBAAqB;AAClC,QAAI,SAAS,cAAc,iBAAiB,GAAG;AAC7C,UAAI,cAAc,SAAS,cAAc,iBAAiB;AAC1D,kBAAY,iBAAiB,SAAS,SAAU,GAAG;AACjD,YAAI,EAAE,OAAO,WAAW,KAAK;AACzB,YAAE,eAAe;AACnB,kBAAQ,IAAI,MAAM;AAAA,QACpB;AAAA,MACF,CAAC;AAAA,IACH;AAAA,EACF;",
+  "names": []
+}
