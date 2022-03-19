@@ -102,7 +102,7 @@ body {
 }
 .imageResults{
   margin: 20px;
-  
+  margin: 0 auto;
 }
 .grid-item{
   position: relative;
@@ -172,8 +172,8 @@ body {
   border-radius: 15px;
 }
 .term-analytics-button{
-  display: none;
-  height: 40px;
+  margin-top: 10px;
+  height: 30px;
 }
 .analytics-form form{
   display: flex;
@@ -201,5 +201,8 @@ body {
   }
   #time-selector{
     width: 60%;
+  }
+  .search-logo-results {
+    width: 30vw;
   }
 }

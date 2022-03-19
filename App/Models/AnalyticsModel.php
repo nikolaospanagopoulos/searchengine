@@ -301,8 +301,8 @@ class AnalyticsModel extends \Core\Model
                 <div class = 'user-analytics-container'>
                     <p>operating system: " . $userObj->operating_system . "</p>
                     <p><strong>browser:</strong> " . $userObj->browser . "</p>
+                    <p><strong>country:</strong> " . $userObj->country . "</p>
                     <p><strong>visits:</strong>: " . $userObj->visits . "</p>
-                    <p><strong>date:</strong>: " . $userObj->created_date . "</p>
                 </div>
                 ";
             }

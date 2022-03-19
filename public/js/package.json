@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node esbuild.js"
+    "start": "node esbuild.js",
+    "prod":"node esbuildProd.js"
   },
   "author": "",
   "license": "ISC",

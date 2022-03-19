@@ -1,4 +1,7 @@
 <?php include dirname(__DIR__) . '/header.php'; ?>
+<a href="<?php echo "/"  ?>">
+        <img src="/images/logo.png" alt="website logo search" class="search-logo-results">
+    </a>
 <script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
 
 <div id='myDiv'> </div>
