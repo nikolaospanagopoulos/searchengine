@@ -22,7 +22,7 @@ export default function Telemetry() {
 
   async function updateClicks(linkid, url, type) {
     try {
-      window.open(url, '_blank');
+      window.open(url, '_blank').focus();
       var rawRes = await fetch("/search/updateClicks", {
         method: "POST",
         mode: "same-origin",
