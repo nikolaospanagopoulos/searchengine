@@ -296,7 +296,6 @@ class AnalyticsModel extends \Core\Model
     {
         $userAnalytics = "<div>";
         foreach ($data as $userObj) {
-            print_r($userObj);
             if(explode(" ",$userObj->created_date)[0] == date('Y-m-d')){
                 $userAnalytics .= "
                 <div class = 'user-analytics-container'>
