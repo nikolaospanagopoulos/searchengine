@@ -296,16 +296,16 @@ class AnalyticsModel extends \Core\Model
     {
         $userAnalytics = "<div>";
         foreach ($data as $userObj) {
-            if(explode(" ",$userObj->created_date)[0] == date('Y-m-d')){
-                $userAnalytics .= "
+
+            $userAnalytics .= "
                 <div class = 'user-analytics-container'>
                     <p>operating system: " . $userObj->operating_system . "</p>
                     <p><strong>browser:</strong> " . $userObj->browser . "</p>
                     <p><strong>visits:</strong>: " . $userObj->visits . "</p>
+                    <p><strong>country:</strong>: " . $userObj->country . "</p>
+                    <p><strong>visit date:</strong>: " . explode(" ", $userObj->created_date)[0] . "</p>
                 </div>
                 ";
-            }
-            
         }
         return $userAnalytics .= "</div>";
     }
