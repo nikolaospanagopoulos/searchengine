@@ -273,7 +273,7 @@ class AnalyticsModel extends \Core\Model
 
         $query->bindParam(':browser', $browser);
         $query->bindParam(':operating_system', $operatingSystem);
-        $query->bindValue(':visits', $visits + 1);
+        $query->bindValue(':visits', $visits);
         $query->bindValue(':created_date', date('Y-m-d'));
 
         $query->execute();
@@ -294,19 +294,109 @@ class AnalyticsModel extends \Core\Model
     }
     public static function showUsersInfo($data)
     {
-        $userAnalytics = "<div>";
-        foreach ($data as $userObj) {
+        $browsers = array();
+        $operatingSystems = array();
 
-            $userAnalytics .= "
-                <div class = 'user-analytics-container'>
-                    <p>operating system: " . $userObj->operating_system . "</p>
-                    <p><strong>browser:</strong> " . $userObj->browser . "</p>
-                    <p><strong>visits:</strong>: " . $userObj->visits . "</p>
-                    <p><strong>country:</strong>: " . $userObj->country . "</p>
-                    <p><strong>visit date:</strong>: " . explode(" ", $userObj->created_date)[0] . "</p>
-                </div>
-                ";
+
+        foreach ($data as $userObj) {
+            array_push($browsers, $userObj->browser);
+            array_push($operatingSystems, $userObj->operating_system);
         }
-        return $userAnalytics .= "</div>";
+
+        $browsers = array_unique($browsers);
+        $operatingSystems = array_unique($operatingSystems);
+
+        $browser_analytics = static::getMaxBrowserVisitsPerMonth($browsers);
+        $operating_system_analytics = static::getMaxOpSystemVisitsPerMonth($operatingSystems);
+
+        $OpSystemsAnalyticsHTML = "<h2>Operating Systems</h2>" . static::showOperatingSystemData($operating_system_analytics);
+
+
+        $browserAnalyticsHTML = "<h2>Browsers</h2>" . static::showBrowserData($browser_analytics);
+
+
+
+        return [$browserAnalyticsHTML, $OpSystemsAnalyticsHTML];
+    }
+
+    public static function getMaxBrowserVisitsPerMonth($browsers)
+    {
+        $browserData = [];
+        $db = static::getDB();
+        foreach ($browsers as $browser) {
+            $stmt = "SELECT MAX(visits) as total FROM `userAnalytics` WHERE browser=:browser";
+
+            $query = $db->prepare($stmt);
+
+            $query->bindParam(":browser", $browser);
+
+            $query->execute();
+
+
+            $browserData[$browser] = $query->fetch(PDO::FETCH_OBJ)->total;
+        }
+        return $browserData;
+    }
+
+    public static function getMaxOpSystemVisitsPerMonth($opSystems)
+    {
+        $opSystemData = [];
+        $db = static::getDB();
+        foreach ($opSystems as $opSystem) {
+            $stmt = "SELECT MAX(visits) as total FROM `userAnalytics` WHERE operating_system=:operating_system";
+
+            $query = $db->prepare($stmt);
+
+            $query->bindParam(":operating_system", $opSystem);
+
+            $query->execute();
+
+
+            $opSystemData[$opSystem] = $query->fetch(PDO::FETCH_OBJ)->total;
+        }
+        return  $opSystemData;
+    }
+
+    public static function showOperatingSystemData($opSystemData)
+    {
+        $html = '
+        <dl>
+       
+        ';
+
+        foreach ($opSystemData as $opSystem => $visits) {
+            $html .= '
+             
+            <dt>' . $opSystem . '</dt>
+            <dd>' . $visits . '</dd>
+            
+        
+            ';
+        }
+
+
+
+        return $html .= '</dl>';
+    }
+
+    public static function showBrowserData($browserData)
+    {
+        $html = '
+       
+        <dl>';
+
+        foreach ($browserData as $browser => $visits) {
+            $html .= '
+           
+            <dt>' . $browser . '</dt>
+            <dd>' . $visits . '</dd>
+            
+        
+            ';
+        }
+
+
+
+        return $html .= '</dl>';
     }
 }

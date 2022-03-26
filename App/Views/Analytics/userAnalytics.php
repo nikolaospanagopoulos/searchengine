@@ -4,7 +4,15 @@ use App\Config;
 
 include dirname(__DIR__) . '/header.php'; ?>
 
-<?php  echo $data;  ?>
+<?php  
+
+echo "<h1 class='analytics-title'>User Analytics</h1>";
+
+foreach($data as $html){
+    echo $html;
+}
+
+?>
 
 
 
