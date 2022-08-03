@@ -15,9 +15,9 @@ class Config{
 
     const DB_USER = 'nikos';
 
-    const DB_PASSWORD = '6942640822';
+    const DB_PASSWORD = 'Lxo3qTqG';
 
-    const DB_PORT = '16542';
+    const DB_PORT = '14221';
 
     const SHOW_ERRORS = true;
 }
